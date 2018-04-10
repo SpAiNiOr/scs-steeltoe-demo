@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scs-demo-server", "scs-demo-server\scs-demo-server.csproj", "{BBE09D13-C052-4E34-8C48-CA5F5AD0D59B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBE09D13-C052-4E34-8C48-CA5F5AD0D59B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE09D13-C052-4E34-8C48-CA5F5AD0D59B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE09D13-C052-4E34-8C48-CA5F5AD0D59B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE09D13-C052-4E34-8C48-CA5F5AD0D59B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
