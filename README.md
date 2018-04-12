@@ -1,4 +1,4 @@
-#This is demo for how to use the Steeltoe.
+# This is demo for how to use the Steeltoe.
 
 Steeltoe is an open source project that enables .NET developers to implement industry standard best practices when building resilient microservices for the cloud. The Steeltoe client libraries enable .NET Core and .NET Framework apps to easily leverage Netflix Eureka, Hystrix, Spring Cloud Config Server, and Cloud Foundry services.
 
@@ -8,9 +8,9 @@ https://steeltoe.io
 
 If you plan to develop with .NET Core or ASP.NET Core and do not already know them well, we recommend you first spend time working through some of the following tutorials from Microsoft:
 
-[Getting Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/getting-started)
+*[Getting Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/getting-started)
+*[Getting Started with C#](https://www.microsoft.com/net/tutorials/csharp/getting-started)
 
-[Getting Started with C#](https://www.microsoft.com/net/tutorials/csharp/getting-started)
 Note: Many of the Steeltoe packages can also be used with .NET Framework and ASP.NET 4 based applications. You are not required to target .NET/ASP.NET Core when using Steeltoe.
 
 ---
@@ -22,6 +22,25 @@ The steeltoe-demo-server is an .NET Core Web API, steeltoe-demo-client is an ASP
 
 
 If there are any merge conflicts, the last provider added to the Configuration takes precedence and overrides all others
+
+---
+
+## Usage:
+se the Cloud Foundry CLI to create a service instance of the Spring Cloud Eureka Server on Cloud Foundry, as follows:
+
+Create a Eureka Server instance on Cloud Foundry
+> cf create-service p-service-registry standard myDiscoveryService
+>
+ Wait for the service to be ready
+> cf services
+
+Bind the service to `myApp`
+> cf bind-service myApp myDiscoveryService
+>
+ Restage the app to pick up change
+> cf restage myApp
+
+Then access the scs-demo-client, then you should get information from scs-demo-server.
 
 ---
 
