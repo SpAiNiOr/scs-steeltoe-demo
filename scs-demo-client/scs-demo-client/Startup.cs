@@ -22,7 +22,7 @@ namespace scs_demo_client
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDiscoveryClient(Configuration);
+            services.AddDiscoveryClient(Configuration);
             services.AddMvc();
         }
 
@@ -40,7 +40,7 @@ namespace scs_demo_client
 
             app.UseStaticFiles();
 
-            //app.UseDiscoveryClient();
+            app.UseDiscoveryClient();
 
             app.UseMvc(routes =>
             {

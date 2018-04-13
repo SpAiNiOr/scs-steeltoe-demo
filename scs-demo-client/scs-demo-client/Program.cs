@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Steeltoe.Extensions.Configuration.CloudFoundry;
+using Steeltoe.Extensions.Logging;
 
 namespace scs_demo_client
 {
@@ -20,9 +21,15 @@ namespace scs_demo_client
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                   //.UseCloudFoundryHosting(5555)
-                   //.AddCloudFoundry()
+                   .UseCloudFoundryHosting(5555)
+                   .AddCloudFoundry()
                    .UseStartup<Startup>()
-                   .Build();
+                   .ConfigureLogging((builderContext, loggingBuilder) =>
+            {
+                loggingBuilder.AddConfiguration(builderContext.Configuration.GetSection("Logging"));
+
+                // Add Steeltoe Dynamic Logging provider
+                loggingBuilder.AddDynamicConsole();
+            }).Build();
     }
 }

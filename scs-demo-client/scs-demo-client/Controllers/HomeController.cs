@@ -9,47 +9,64 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Pivotal.Discovery.Client;
 using Steeltoe.Common.Discovery;
+using Newtonsoft.Json;
 
 namespace scs_demo_client.Controllers
 {
     public class HomeController : Controller
     {
+        DiscoveryHttpClientHandler _handler;
+        IDiscoveryClient _client;
+
+        public HomeController(IDiscoveryClient client)
+        {
+            _handler = new DiscoveryHttpClientHandler(client);
+            _client = client;
+        }
+        
         public IActionResult Index()
         {
-
-            //public scs_demo_service(IDiscoveryClient, client)
-            //{
-                
-            //}
-            //_handler = new DiscoveryHttpClientHandler(IDiscoveryClient client);
-
-            //HttpClient client = new HttpClient();
-            //client.BaseAddress = new Uri("http://www.mithril.cc/");
-            //client.DefaultRequestHeaders.Accept.Clear();
-            //client.DefaultRequestHeaders.Accept.Add(
-            //    new MediaTypeWithQualityHeaderValue("application/json"));
-
-            //HttpResponseMessage response = client.GetAsync("/").Result;
-
-
-
-
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    ViewData["CallResult"] = response;
-            //}
-            //else
-            //{
-            //    ViewData["CallResult"] = "No resonse";
-            //}
-
             return View();
         }
 
         [HttpPost]
-        public string Index2()
+        public IActionResult CallResult()
         {
-            return "test is ok";
+            try
+            {
+                var instances = _client.GetInstances("scs-demo-server");
+                ViewData["CallResult"] = JsonConvert.SerializeObject(instances);
+            }
+            catch (Exception ex)
+            {
+                ViewData["CallResult"] = ex.ToString();
+            }
+
+            //HttpClient client = new HttpClient(_handler, false);
+            ////client.BaseAddress = new Uri("http://scs-demo-server");
+            ////client.DefaultRequestHeaders.Accept.Clear();
+            ////client.DefaultRequestHeaders.Accept.Add(
+            //    //new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //try
+            //{
+            //    HttpResponseMessage response = client.GetAsync("http://scs-demo-server/api/values/5").Result;
+
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        ViewData["CallResult"] = response;
+            //    }
+            //    else
+            //    {
+            //        ViewData["CallResult"] = "No resonse";
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ViewData["CallResult"] = ex.ToString();
+            //}
+
+            return View();
         }
 
         public IActionResult About()
