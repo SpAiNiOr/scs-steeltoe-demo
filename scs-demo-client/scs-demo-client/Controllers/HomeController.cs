@@ -32,39 +32,45 @@ namespace scs_demo_client.Controllers
         [HttpPost]
         public IActionResult CallResult()
         {
-            try
-            {
-                var instances = _client.GetInstances("scs-demo-server");
-                ViewData["CallResult"] = JsonConvert.SerializeObject(instances);
-            }
-            catch (Exception ex)
-            {
-                ViewData["CallResult"] = ex.ToString();
-            }
 
-            //HttpClient client = new HttpClient(_handler, false);
-            ////client.BaseAddress = new Uri("http://scs-demo-server");
-            ////client.DefaultRequestHeaders.Accept.Clear();
-            ////client.DefaultRequestHeaders.Accept.Add(
-            //    //new MediaTypeWithQualityHeaderValue("application/json"));
+            // the following code snippet is for check if we can get the registered information from Register Service.
 
             //try
             //{
-            //    HttpResponseMessage response = client.GetAsync("http://scs-demo-server/api/values/5").Result;
+            //    var instances = _client.GetInstances("scs-demo-server");
+            //    ViewData["CallResult"] = JsonConvert.SerializeObject(instances);
 
-            //    if (response.IsSuccessStatusCode)
-            //    {
-            //        ViewData["CallResult"] = response;
-            //    }
-            //    else
-            //    {
-            //        ViewData["CallResult"] = "No resonse";
-            //    }
+            //    var services = _client.Services;
+            //    ViewData["CallResult2d"] = JsonConvert.SerializeObject(services);
             //}
             //catch (Exception ex)
             //{
             //    ViewData["CallResult"] = ex.ToString();
             //}
+
+            HttpClient client = new HttpClient(_handler, false);
+            // client.BaseAddress = new Uri("http://scs-demo-server");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            try
+            {
+                HttpResponseMessage response = client.GetAsync("http://scs-demo-server/api/values/5").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewData["CallResult"] = response;
+                }
+                else
+                {
+                    ViewData["CallResult"] = "No resonse";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewData["CallResult"] = ex.ToString();
+            }
 
             return View();
         }
