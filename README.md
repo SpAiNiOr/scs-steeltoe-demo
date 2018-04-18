@@ -16,7 +16,7 @@ Note: Many of the Steeltoe packages can also be used with .NET Framework and ASP
 ---
 
 ## About this sample.
-The steeltoe-demo-server is provide API and registered itself in SCS in PCF. The steeltoe-demo-client call the API, and display the result on. The server is an .NET Core Web API,  the client is an ASP .NET CORE MVC.
+The steeltoe-demo-server is provide API and registered itself in SCS in PCF. The steeltoe-demo-client call the API, and display the result on broswer. The server is an .NET Core Web API,  the client is an ASP .NET CORE MVC.
 
 ---
 
