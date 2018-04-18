@@ -44,6 +44,18 @@ Then access the scs-demo-client, then you should get information from scs-demo-s
 
 ---
 
+By changing the appsettings.json, we can control the overall behavior of the client.
+Whole configuration settings can be found here: https://steeltoe.io/docs/steeltoe-discovery/#1-2-2-eureka-client-settings
+We need pay attention to how App register itself to Eurake server.The `registrationMethod` controls ow to register service on Cloud Foundry. Can be `route`, `direct`, or `hostname`.
+
+>"cloud" : {
+       "discovery" : {
+         "registrationMethod" : "route"
+       }
+     }
+
+---
+
 References:
 
 Documents: https://steeltoe.io/docs/steeltoe-introduction/

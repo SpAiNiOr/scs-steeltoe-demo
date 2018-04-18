@@ -20,7 +20,7 @@ namespace scs_demo_server.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            return "Hello from Spring Cloud Service!";
         }
 
         // POST api/values

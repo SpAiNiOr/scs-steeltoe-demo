@@ -40,13 +40,13 @@ namespace scs_demo_client.Controllers
             //    var instances = _client.GetInstances("scs-demo-server");
             //    ViewData["CallResult"] = JsonConvert.SerializeObject(instances);
 
-            //    var services = _client.Services;
-            //    ViewData["CallResult2d"] = JsonConvert.SerializeObject(services);
             //}
             //catch (Exception ex)
             //{
             //    ViewData["CallResult"] = ex.ToString();
             //}
+
+            // try to call selected API, and return result.
 
             HttpClient client = new HttpClient(_handler, false);
             // client.BaseAddress = new Uri("http://scs-demo-server");
@@ -60,7 +60,7 @@ namespace scs_demo_client.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    ViewData["CallResult"] = response;
+                    ViewData["CallResult"] = response.Content.ReadAsStringAsync().Result;
                 }
                 else
                 {
