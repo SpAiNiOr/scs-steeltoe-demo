@@ -1,6 +1,6 @@
-#Steeltoe Sample.
+# Steeltoe Sample.
 
-##Introduce.
+## Introduce.
 
 Steeltoe is an open source project that enables .NET developers to implement industry standard best practices when building resilient microservices for the cloud. The Steeltoe client libraries enable .NET Core and .NET Framework apps to easily leverage Netflix Eureka, Hystrix, Spring Cloud Config Server, and Cloud Foundry services.
 
@@ -15,12 +15,12 @@ Note: Many of the Steeltoe packages can also be used with .NET Framework and ASP
 
 ---
 
-##About this sample.
+## About this sample.
 The steeltoe-demo-server is provide API and registered itself in SCS in PCF. The steeltoe-demo-client call the API, and display the result on. The server is an .NET Core Web API,  the client is an ASP .NET CORE MVC.
 
 ---
 
-##How to use this sample.
+## How to use this sample.
 We can create Eureka service using Apps Manager or Cli. The following shows how to use the Cli.
 Use the Cloud Foundry CLI to create a service instance of the Spring Cloud Eureka Server on Cloud Foundry, as follows:
 
@@ -42,7 +42,7 @@ Bind the service to both server and client  `serverName/clientName`
 Then open the route of scs-demo-client in browser, then you will get information from scs-demo-server.
 
 ---
-##Settings.
+## Settings.
 
 By changing the appsettings.json, we can control the overall behavior of the client. The `spring:application:name` is the name of the application to be registered with Eureka. We need pay attention to how App register itself to Eurake server.The `registrationMethod` controls ow to register service on Cloud Foundry. Can be `route`, `direct`, or `hostname`.
 ```json
@@ -56,7 +56,7 @@ Whole configuration settings can be found here: https://steeltoe.io/docs/steelto
 
 ---
 
-##References:
+## References:
 
 Documents:
 https://steeltoe.io/docs/steeltoe-introduction/
